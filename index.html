@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>We ❤️ CWP</title>
+  <title>The Holy Trinity</title>
   <style>
     body {
       margin: 0;
@@ -14,30 +14,87 @@
       text-align: center;
     }
 
-    h1 {
+    .main-menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      animation: fadeOut 3s forwards;
+    }
+
+    .main-menu h1 {
       font-size: 4em;
-      margin-top: 50px;
+      color: #00ffcc;
+      text-shadow: 0 0 20px #00ffcc;
+      margin-bottom: 20px;
+    }
+
+    .main-menu .illuminati {
+      width: 120px;
+      height: auto;
+      margin-bottom: 20px;
       animation: pulse 2s infinite;
-      background: linear-gradient(45deg, #ff0057, #ffcc00, #00ffcc, #00aaff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    }
+
+    .main-menu .adam {
+      width: 300px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #fff;
+    }
+
+    @keyframes fadeOut {
+      0% { opacity: 1; }
+      70% { opacity: 1; }
+      100% { opacity: 0; visibility: hidden; }
     }
 
     @keyframes pulse {
       0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.1); }
+      50% { transform: scale(1.2); }
     }
 
-    .floating-heart {
-      position: absolute;
-      font-size: 2em;
-      animation: floatUp 6s infinite ease-in;
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.6);
+      padding: 10px;
+      z-index: 1000;
     }
 
-    @keyframes floatUp {
-      0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
-      50% { opacity: 1; }
-      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+    nav button {
+      font-size: 1.2em;
+      margin: 0 15px;
+      padding: 10px 20px;
+      background: #ff0057;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      cursor: pointer;
+    }
+
+    section {
+      display: none;
+      padding-top: 80px;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    h2 {
+      font-size: 3em;
+      animation: pulse 2s infinite;
+      background: linear-gradient(45deg, #ff0057, #ffcc00, #00ffcc, #00aaff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .love-note {
@@ -51,13 +108,47 @@
       25% { transform: rotate(3deg); }
       75% { transform: rotate(-3deg); }
     }
+
+    .floating-heart {
+      position: absolute;
+      font-size: 2em;
+      animation: floatUp 6s infinite ease-in;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+    }
   </style>
 </head>
 <body>
-  <h1>GOD, WE LOVE CWP</h1>
-  <div class="love-note">His smile powers the sun. His laugh cures sadness. His name? Legendary.</div>
+  <div class="main-menu">
+    <h1>THE HOLY TRINITY</h1>
+    <img class="illuminati" src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Dollarnote_siegel_hq.jpg" alt="Illuminati Symbol">
+  </div>
 
-  <!-- Floating heart emojis -->
+  <nav>
+    <button onclick="showSection('cwp')">CWP</button>
+    <button onclick="showSection('yan')">Dr. Yan</button>
+    <button onclick="showSection('han')">Dr. Han</button>
+  </nav>
+
+  <section id="cwp" class="active">
+    <h2>GOD, WE LOVE CWP</h2>
+    <div class="love-note">His smile powers the sun. His laugh cures sadness. His name? Legendary.</div>
+  </section>
+
+  <section id="yan">
+    <h2>ALL HAIL DR. YAN</h2>
+    <div class="love-note">He’s the reason atoms behave. His wisdom bends time. His coffee? Transcendent.</div>
+  </section>
+
+  <section id="han">
+    <h2>DR. HAN IS OUR HERO</h2>
+    <div class="love-note">He speaks, and equations solve themselves. His presence? A gravitational constant of greatness.</div>
+  </section>
+
   <script>
     for (let i = 0; i < 30; i++) {
       const heart = document.createElement('div');
@@ -66,6 +157,11 @@
       heart.style.left = Math.random() * 100 + 'vw';
       heart.style.animationDelay = Math.random() * 5 + 's';
       document.body.appendChild(heart);
+    }
+
+    function showSection(id) {
+      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
     }
   </script>
 </body>
