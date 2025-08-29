@@ -2,17 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Holy Trinity</title>
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: url('https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif') center center / cover no-repeat;
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      overflow: hidden;
-      color: white;
-      text-align: center;
-    }
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  overflow: hidden; /* disables ALL scrolling */
+  width: 100vw;
+  height: 100vh;
+  color: white;
+  text-align: center;
+}
+
+
+
+.background-gif {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 1;
+  pointer-events: none;
+}
+
+
 
     .main-menu {
       position: fixed;
@@ -28,12 +46,16 @@
       z-index: 9999;
     }
 
-    .main-menu h1 {
-      font-size: 4em;
-      color: #00ffcc;
-      text-shadow: 0 0 20px #00ffcc;
-      margin-bottom: 20px;
-    }
+
+.main-menu h1 {
+  font-size: 4em;
+  color: #00ffcc;
+  text-shadow: 0 0 20px #00ffcc;
+  margin-bottom: 40px;
+  padding-top: 5vh; /* gives breathing room from top */
+  z-index: 1;
+  position: relative;
+}
 
     .main-menu .illuminati {
       width: 120px;
@@ -53,17 +75,16 @@
       box-shadow: 0 0 10px #ff0057;
       animation: pulse 2s infinite;
     }
-@keyframes pressBounce {
-  0% { transform: scale(1); }
-  50% { transform: scale(0.92); }
-  100% { transform: scale(1); }
-}
 
-.start-btn:active {
-  animation: pressBounce 0.2s ease;
-}
+    @keyframes pressBounce {
+      0% { transform: scale(1); }
+      50% { transform: scale(0.92); }
+      100% { transform: scale(1); }
+    }
 
-
+    .start-btn:active {
+      animation: pressBounce 0.2s ease;
+    }
 
     @keyframes pulse {
       0%, 100% { transform: scale(1); }
@@ -135,9 +156,50 @@
       50% { opacity: 1; }
       100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
     }
+
+    @media (max-width: 600px) {
+      .main-menu h1 {
+        font-size: 2.5em;
+      }
+
+      .main-menu .illuminati {
+        width: 80px;
+      }
+
+      .start-btn {
+        font-size: 1em;
+        padding: 10px 20px;
+      }
+
+      nav button {
+        font-size: 1em;
+        margin: 5px;
+        padding: 8px 16px;
+      }
+
+      h2 {
+        font-size: 2em;
+      }
+
+      .love-note {
+        font-size: 1.2em;
+        padding: 0 10px;
+      }
+
+      .floating-heart {
+        font-size: 1.5em;
+      }
+
+      button {
+        min-width: 44px;
+        min-height: 44px;
+      }
+    }
   </style>
 </head>
 <body>
+  <img class="background-gif" src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" alt="Background GIF">
+
   <div class="main-menu" id="intro">
     <h1>THE HOLY TRINITY</h1>
     <img class="illuminati" src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Dollarnote_siegel_hq.jpg" alt="Illuminati Symbol">
@@ -145,7 +207,7 @@
   </div>
 
   <audio id="bg-music" loop>
-    <source src="https://topthreeguy.com//Ghostrifter%20Official%20-%20Morning%20Routine.mp3" type="audio/mpeg">
+    <source src="https://topthreeguy.com/Ghostrifter%20Official%20-%20Morning%20Routine.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
