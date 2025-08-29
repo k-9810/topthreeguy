@@ -26,7 +26,6 @@
       justify-content: center;
       align-items: center;
       z-index: 9999;
-      animation: fadeOut 3s forwards;
     }
 
     .main-menu h1 {
@@ -43,21 +42,37 @@
       animation: pulse 2s infinite;
     }
 
-    .main-menu .adam {
-      width: 300px;
-      border-radius: 20px;
-      box-shadow: 0 0 20px #fff;
+    .start-btn {
+      font-size: 1.2em;
+      padding: 12px 24px;
+      background: #ff0057;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 0 10px #ff0057;
+      animation: pulse 2s infinite;
+    }
+@keyframes pressBounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.92); }
+  100% { transform: scale(1); }
+}
+
+.start-btn:active {
+  animation: pressBounce 0.2s ease;
+}
+
+
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
     }
 
     @keyframes fadeOut {
       0% { opacity: 1; }
-      70% { opacity: 1; }
       100% { opacity: 0; visibility: hidden; }
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.2); }
     }
 
     nav {
@@ -123,10 +138,16 @@
   </style>
 </head>
 <body>
-  <div class="main-menu">
+  <div class="main-menu" id="intro">
     <h1>THE HOLY TRINITY</h1>
     <img class="illuminati" src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Dollarnote_siegel_hq.jpg" alt="Illuminati Symbol">
+    <button class="start-btn" onclick="startExperience()">🔊 Start the Vibe</button>
   </div>
+
+  <audio id="bg-music" loop>
+    <source src="Ghostrifter Official - Morning Routine.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
 
   <nav>
     <button onclick="showSection('cwp')">CWP</button>
@@ -162,6 +183,18 @@
     function showSection(id) {
       document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
       document.getElementById(id).classList.add('active');
+    }
+
+    function startExperience() {
+      const audio = document.getElementById('bg-music');
+      audio.volume = 0.5;
+      audio.play().catch(err => console.log("Playback blocked:", err));
+
+      const intro = document.getElementById('intro');
+      intro.style.animation = 'fadeOut 2s forwards';
+      setTimeout(() => {
+        intro.style.display = 'none';
+      }, 2000);
     }
   </script>
 </body>
