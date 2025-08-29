@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>We ❤️ Chris Will Pinto</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('https://cdn.discordapp.com/attachments/1206003306187464745/1316537978297778236/cwp.gif?ex=68b22f0a&is=68b0dd8a&hm=56e34bb393d2c9db3503aeaa31c7ca4b6f6c69f0a19419ce9f48d764ae9b6f90&') center center / cover no-repeat;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      overflow: hidden;
+      color: white;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 4em;
+      margin-top: 50px;
+      animation: pulse 2s infinite;
+      background: linear-gradient(45deg, #ff0057, #ffcc00, #00ffcc, #00aaff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .floating-heart {
+      position: absolute;
+      font-size: 2em;
+      animation: floatUp 6s infinite ease-in;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+    }
+
+    .love-note {
+      margin-top: 20px;
+      font-size: 1.5em;
+      animation: wiggle 3s infinite;
+    }
+
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(3deg); }
+      75% { transform: rotate(-3deg); }
+    }
+  </style>
+</head>
+<body>
+  <h1>GOD, WE LOVE CHRIS WILL PINTO</h1>
+  <div class="love-note">His smile powers the sun. His laugh cures sadness. His name? Legendary.</div>
+
+  <!-- Floating heart emojis -->
+  <script>
+    for (let i = 0; i < 30; i++) {
+      const heart = document.createElement('div');
+      heart.className = 'floating-heart';
+      heart.textContent = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDelay = Math.random() * 5 + 's';
+      document.body.appendChild(heart);
+    }
+  </script>
+</body>
+</html>
